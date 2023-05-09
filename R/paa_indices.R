@@ -19,10 +19,10 @@ paa_indices <- function(len, len.out) {
   }
 
   remainder <- len %% len.out
-  increment <- rep(0, len.out)
+  increment <- rep(0, len.out + 1)
 
   if (remainder != 0) {
-    increment_indices <- seq(len.out - remainder + 1, len.out)
+    increment_indices <- seq(len.out + 2 - remainder, len.out + 1)
     increment[increment_indices] <- seq(1, remainder)
   }
 
