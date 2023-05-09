@@ -1,3 +1,14 @@
+#' Symbolize
+#'
+#' @param x The vector to be symbolized.
+#' @param alpha The size of the alphabet.
+#' @param w The output length.
+#' @param type The SAX method.
+#' @param alphabet The alphabet to be used.
+#'
+#' @return A symbolic vector.
+#' @export
+#'
 symbolize <- function(x, alpha, w, type, alphabet = letters) {
   x <- paa(x, w)
   if (alpha == 1) {

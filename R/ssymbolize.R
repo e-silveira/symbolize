@@ -1,3 +1,15 @@
+#' SSymbolize
+#'
+#' @param x The vector to be symbolized.
+#' @param alpha The size of the alphabet.
+#' @param len.out The output length.
+#' @param type The SAX method.
+#' @param from The beginning of the desired interval.
+#' @param to The end of the desired interval.
+#'
+#' @return A symbolic vector.
+#' @export
+#'
 ssymbolize <- function(x, alpha, len.out, type, from, to) {
   if (alpha < 3) {
     stop("Invalid alphabet size.")
