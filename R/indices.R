@@ -1,14 +1,30 @@
-#' Title
+#' Indices
 #'
-#' @param x The vector to be symbolized.
-#' @param len.out The length of x after dimensionality reduction.
+#' @param len The length of the vector to be symbolized.
+#' @param len.out The length of x after dimensional reduction.
 #'
-#' @return The indices ...
+#' @return The indices of PAA.
 #' @export
 #'
 #' @examples
-#' indices(rnorm(100), 10)
-indices <- function(x, len.out) {
-  len <- length(x)
-  seq(0, len.out) * floor(len / len.out) + remainder_increment(len, len.out)
+#' indices(100, 10)
+indices <- function(len, len.out) {
+
+  if (len == 0 || len.out == 0) {
+    stop("Invalid zero length.")
+  }
+
+  if (len.out > len) {
+    stop("Output length greater than input length.")
+  }
+
+  remainder <- len %% len.out
+  increment <- rep(0, len.out)
+
+  if (remainder != 0) {
+    increment_indices <- seq(len.out - remainder + 1, len.out)
+    increment[increment_indices] <- seq(1, remainder)
+  }
+
+  return(seq(0, len.out) * floor(len / len.out) + increment)
 }

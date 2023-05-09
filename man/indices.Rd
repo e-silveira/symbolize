@@ -2,21 +2,21 @@
 % Please edit documentation in R/indices.R
 \name{indices}
 \alias{indices}
-\title{Title}
+\title{Indices}
 \usage{
-indices(x, len.out)
+indices(len, len.out)
 }
 \arguments{
-\item{x}{The vector to be symbolized.}
+\item{len}{The length of the vector to be symbolized.}
 
-\item{len.out}{The length of x after dimensionality reduction.}
+\item{len.out}{The length of x after dimensional reduction.}
 }
 \value{
-The indices ...
+The indices of PAA.
 }
 \description{
-Title
+Indices
 }
 \examples{
-indices(rnorm(100), 10)
+indices(100, 10)
 }
