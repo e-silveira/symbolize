@@ -1,14 +1,14 @@
-#' Indices
+#' PAA Indices
 #'
 #' @param len The length of the vector to be symbolized.
 #' @param len.out The length of x after dimensional reduction.
 #'
-#' @return The indices of PAA.
+#' @return The indices for doing Piecewise Aggregate Approximation.
 #' @export
 #'
 #' @examples
-#' indices(100, 10)
-indices <- function(len, len.out) {
+#' paa_indices(100, 10)
+paa_indices <- function(len, len.out) {
 
   if (len == 0 || len.out == 0) {
     stop("Invalid zero length.")
