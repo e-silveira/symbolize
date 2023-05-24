@@ -11,6 +11,9 @@
 #'
 symbolize <- function(x, alpha, w, type, alphabet = letters) {
   type <- tolower(type)
+  mean_x <- mean(x)
+  sd_x <- stats::sd(x)
+  x <- zscore(x)
   x <- paa(x, w)
   if (alpha == 1) {
     structure(rep(alphabet[1], w), "bp" = NA, class = c("symbolic", "character"))
@@ -18,6 +21,6 @@ symbolize <- function(x, alpha, w, type, alphabet = letters) {
     class(x) <- c(type, class(x))
     bp <- breakpoints(x, alpha)
     sym <- discretize(x, alpha, bp, alphabet)
-    structure(sym, "bp" = bp, "paa" = x, class = c("symbolic", "character"))
+    structure(sym, "bp" = bp * sd_x + mean_x, "paa" = x * sd_x + mean_x, class = c("symbolic", "character"))
   }
 }

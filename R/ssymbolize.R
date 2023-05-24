@@ -15,6 +15,9 @@ ssymbolize <- function(x, alpha, len.out, type, from, to) {
     stop("Invalid alphabet size.")
   }
   type <- tolower(type)
+  mean_x <- mean(x)
+  sd_x <- stats::sd(x)
+  x <- zscore(x)
   x <- paa(x, len.out)
   class(x) <- c(type, class(x))
   bp <- numeric()
@@ -26,5 +29,5 @@ ssymbolize <- function(x, alpha, len.out, type, from, to) {
     bp <- sax_adjust_closer_to(breakpoints(x, alpha), from, to)
   }
   sym <- discretize(x, alpha, bp, letters)
-  structure(sym, "bp" = bp, "paa" = x, class = c("symbolic", "character"))
+  structure(sym, "bp" = bp * sd_x + mean_x, "paa" = x * sd_x + mean_x, class = c("symbolic", "character"))
 }
