@@ -10,6 +10,7 @@
 #' @export
 #'
 symbolize <- function(x, alpha, w, type, alphabet = letters) {
+  type <- tolower(type)
   x <- paa(x, w)
   if (alpha == 1) {
     structure(rep(alphabet[1], w), "bp" = NA, class = c("symbolic", "character"))
