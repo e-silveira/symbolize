@@ -17,6 +17,8 @@ ssymbolize <- function(x, alpha, len.out, type, from, to) {
   type <- tolower(type)
   mean_x <- mean(x)
   sd_x <- stats::sd(x)
+  from <- (from - mean_x) / sd_x
+  to <- (to - mean_x) / sd_x
   x <- zscore(x)
   x <- paa(x, len.out)
   class(x) <- c(type, class(x))
