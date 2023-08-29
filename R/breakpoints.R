@@ -11,5 +11,5 @@ breakpoints.dwsax <- function(x, alpha) {
 }
 
 breakpoints.qsax <- function(x, alpha) {
-  unname(stats::quantile(x, cuts(alpha)))
+  unname(stats::quantile(x, cuts(alpha), na.rm = TRUE))
 }
